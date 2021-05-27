@@ -10,7 +10,12 @@ public class Generator implements Runnable{
 		super();
 		this.num = num;
 	}
-	
+	public static synchronized void count(Order order) {		
+		System.out.println("Заказ №" + counter + ":");
+		order.info();
+		System.out.println("Полная цена: " + order.getCost());
+		counter += 1;
+	}
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
@@ -19,12 +24,9 @@ public class Generator implements Runnable{
 			ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("CtxBuilder.xml");
 			Order order = ctx.getBean("Order", Order.class);
 			System.out.println("Касса " + num);
-			System.out.println("Заказ №" + counter + ":");
-			order.info();
-			System.out.println("Полная цена: " + order.getCost());
+			count(order);
 			ctx.close();
-   			counter +=1;
-      			// Остановка потока, если достигли 10 заказа
+      			// Остановка потока, если достигли 10 заказов
       			if (counter > 10)
 			  break;	
 		}
