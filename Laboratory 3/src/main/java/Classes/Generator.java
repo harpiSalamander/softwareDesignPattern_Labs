@@ -23,15 +23,10 @@ public class Generator implements Runnable{
 			order.info();
 			System.out.println("Полная цена: " + order.getCost());
 			ctx.close();
-      counter +=1;
-      // Остановка потока, если достигли 10 заказа
-      if (counter > 10)
+   			counter +=1;
+      			// Остановка потока, если достигли 10 заказа
+      			if (counter > 10)
 			  break;	
-			try {
-				Thread.sleep(10);
-			} catch (InterruptedException e) {
-				break;
-			}
 		}
 		System.out.println("Касса " + num + " остановлена...");
 	}
