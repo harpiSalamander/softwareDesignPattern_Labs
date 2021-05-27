@@ -15,12 +15,6 @@ public class Application {
 		for (Thread thread : cashDesk) {
 			thread.start();
 		}
-	//	try {
-	//		Thread.sleep(300);
-	//	} catch (InterruptedException e) {}
-	//	for (Thread thread : cashDesk) {
-	//		thread.interrupt();
-	//	}
 	}
 
 }
